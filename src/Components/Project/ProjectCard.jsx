@@ -1,39 +1,31 @@
-// src/components/ProjectCard.jsx
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
 const ProjectCard = ({ title, description, link }) => {
   return (
-    <div className="relative bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300">
-      {/* Blur effect behind the card */}
-      <div className="absolute inset-0 bg-black opacity-30 backdrop-blur-sm rounded-lg"></div>
-      
-      {/* Card content */}
+    <motion.div
+      className="relative rounded-2xl p-6 shadow-lg transition-all duration-300 border box overflow-hidden group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      whileHover={{ scale: 1.03, y: -2,  boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)" }} // Added hover effect
+    >
       <div className="relative z-10">
-        <h3 className="text-xl font-semibold text-green-400 mb-2">{title}</h3>
-        <p className="text-lg text-white mb-4">{description}</p>
+        <h3 className="text-xl font-bold mb-2 transition-transform duration-300 group-hover:translate-x-2">
+          {title}
+        </h3>
+        <p className="text-sm">{description}</p>
+
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className=" text-white font-bold py-2 px-4 rounded flex items-center transition duration-300"
+          className="inline-block mt-4 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 bg-purple-600 hover:bg-purple-500 text-white"
         >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2h-7m15 13l-3-3m0 0l-3 3m3-3V8a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            ></path>
-          </svg>
+          View Project →
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

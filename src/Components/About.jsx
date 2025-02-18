@@ -1,100 +1,85 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
-const AboutPage = ({id}) => {
-  return (
-    <div id={id} className="min-h-screen flex flex-col items-center bg-transparent p-8">
-      {/* About Me Heading */}
-      <div className="text-4xl md:text-5xl font-extrabold text-white mb-10 text-center">
-        About Me
-      </div>
+const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
-      {/* Description */}
-      <div className="text-lg text-gray-300 mb-16 text-center max-w-4xl leading-relaxed">
-        Hi, I'm <span className="text-blue-400 font-bold">Arman Dhuka</span>, a passionate web developer with a strong love for building innovative and user-friendly applications. I thrive on tackling new challenges and am always looking for opportunities to grow and evolve as a developer. As a quick learner and a dedicated team player, I bring creativity and problem-solving skills to every project I work on. Alongside traditional development techniques, I leverage AI technologies to enhance my coding process, making my work more efficient and cutting-edge. I'm excited to share my skills, experience, and the innovative solutions I can bring to your projects.
-      </div>
+const AboutPage = ({ id }) => {
+    return (
+        <div id={id} className="h-auto py-16" style={{ backgroundColor: 'var(--background)' }}>
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className="text-center"
+                >
+                    <h2 className="text-4xl font-bold mb-8" style={{ color: 'var(--text)' }}>
+                        About Me
+                    </h2>
+                    <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text)' }}>
+                        I'm a passionate developer with expertise in building modern web applications.
+                        My focus is on creating clean, efficient, and user-friendly solutions that
+                        solve real-world problems. I enjoy working with cutting-edge technologies and
+                        continuously learning to improve my skills.
+                    </p>
+                </motion.div>
 
-      {/* Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
-        
-        {/* Education Section (Card) */}
-        <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-1">
-          <h2 className="text-2xl font-bold mb-4 text-blue-400">Education</h2>
-          <div className="flex flex-col gap-4 text-gray-300">
-            <div className="flex items-center space-x-4">
-              <div className="bg-blue-500 p-3 rounded-full text-white">
-                <i className="fas fa-graduation-cap text-lg"></i>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold">10th Standard</h3>
-                <p>MIK (2021-2022) - 75%</p>
-              </div>
+                {/* Skills Section */}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+                >
+                    {/* Example Skill Card */}
+                    <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        <h3 className="text-xl font-semibold mb-2 text-blue-400">Web Development</h3>
+                        <ul className="text-gray-300">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                        </ul>
+                    </div>
+
+                    {/* Add more skill cards here */}
+                    <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        <h3 className="text-xl font-semibold mb-2 text-blue-400">UI/UX Design</h3>
+                        <ul className="text-gray-300">
+                            <li>Figma</li>
+                            <li>Adobe XD</li>
+                            <li>User Research</li>
+                        </ul>
+                    </div>
+
+                    <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        <h3 className="text-xl font-semibold mb-2 text-blue-400">Other Skills</h3>
+                        <ul className="text-gray-300">
+                            <li>Communication</li>
+                            <li>Problem Solving</li>
+                            <li>Teamwork</li>
+                        </ul>
+                    </div>
+
+                    <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        <h3 className="text-xl font-semibold mb-2 text-blue-400">Backend Development</h3>
+                        <ul className="text-gray-300">
+                            <li>Node.js</li>
+                            <li>Express.js</li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+
+                    {/* ... */}
+                </motion.div>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-blue-500 p-3 rounded-full text-white">
-                <i className="fas fa-graduation-cap text-lg"></i>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold">12th Standard</h3>
-                <p>MIK (2014-2025) - 85%</p>
-              </div>
-            </div>
-          </div>
         </div>
-
-        {/* Skills Section (Card) */}
-        <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-1 md:col-span-2">
-          <h2 className="text-2xl font-bold mb-4 text-blue-400">Web Skills</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Frontend Skill Card */}
-            <div className="bg-transparent p-4 rounded-lg transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-2 text-green-400">Frontend</h3>
-              <ul className="text-gray-300">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React.js</li>
-                <li>Tailwind CSS</li>
-              </ul>
-            </div>
-            {/* Backend Skill Card */}
-            <div className="bg-transparent  p-4 rounded-lg transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-2 text-green-400">Backend</h3>
-              <div className="text-gray-300">Coming Soon</div>
-            </div>
-            {/* Database Skill Card */}
-            <div className="bg-transparent  p-4 rounded-lg transition-all duration-300 ">
-              <h3 className="text-xl font-semibold mb-2 text-green-400">Database</h3>
-              <div className="text-gray-300">Coming Soon</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Other Skills Section */}
-      <div className="bg-transparent border-[2px] border-blue-700 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl w-full max-w-6xl mt-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Design Skills Card */}
-          <div className=" p-4 rounded-lg transition-all duration-300 ">
-            <h3 className="text-xl font-semibold mb-2 text-green-400">Other Skills</h3>
-            <ul className="list-disc pl-4 text-gray-300">
-              <li>Video Editing</li>
-              <li>Graphic design</li>
-              <li>Ai</li>
-            </ul>
-          </div>
-          {/* Communication Skills Card */}
-          <div className=" p-4 rounded-lg transition-all duration-300 ">
-            <h3 className="text-xl font-semibold mb-2 text-green-400">Communication Skills</h3>
-            <ul className="list-disc pl-4 text-gray-300">
-              <li>Written Communication</li>
-              <li>Verbal Communication</li>
-              <li>Team Collaboration</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default AboutPage;

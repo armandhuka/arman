@@ -1,29 +1,69 @@
-// src/components/BannerPage.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const BannerPage = () => {
   return (
-    <div className="h-screen flex justify-center items-center flex-col bg-transparent px-4">
-      {/* Centered Text */}
-      <div className="text-5xl sm:text-6xl md:text-8xl font-bold text-blue-700 text-center hover:text-blue-500 transition-colors duration-500 ease-in-out">
-        Arman Dhuka
-      </div>
-
-      <div className="w-full sm:w-3/4 md:w-1/2 text-base sm:text-lg text-white mt-4 text-center">
-        I'm a passionate web developer with a love for building innovative and user-friendly applications.
-        I'm always looking for new challenges and opportunities to grow as a developer.
-      </div>
-
-      <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-        <button title='no work' className="border-[2px] border-solid border-blue-700 
-        hover:bg-slate-100 hover:text-[#262626] text-white font-bold py-4 px-10 sm:py-3 sm:px-12 rounded-lg transform hover:scale-105 transition duration-300 ease-in-out">
-          Resume
-        </button>
-        <a href='https://github.com/armandhuka/' className="border-[2px] border-solid border-blue-700 hover:bg-slate-100 hover:text-[#262626] text-white font-bold py-4 px-10 sm:py-3 sm:px-12 rounded-lg transform hover:scale-105 transition duration-300 ease-in-out">
-          GitHub
+    <section
+      id='home'
+      className="min-h-screen flex items-center justify-center relative"
+    >
+      {/* Social Media Icons (Mobile Responsive) */}
+      <motion.div
+        className="absolute left-4 top-1/4 z-10 flex flex-col space-y-4 md:left-8 lg:left-12" // Adjusted left positions for responsiveness
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin className="text-3xl text-gray-400 hover:text-blue-500 transition-colors duration-300 md:text-4xl lg:text-5xl" /> {/* Increased icon size on larger screens */}
         </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaTwitter className="text-3xl text-gray-400 hover:text-blue-500 transition-colors duration-300 md:text-4xl lg:text-5xl" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaGithub className="text-3xl text-gray-400 hover:text-blue-500 transition-colors duration-300 md:text-4xl lg:text-5xl" />
+        </a>
+      </motion.div>
+
+      {/* Content (Center) */}
+      <div className="text-center">
+        <motion.h1
+          className="text-4xl font-bold mb-8 transition-colors duration-300 md:text-5xl lg:text-6xl" // Adjusted text sizes for responsiveness
+          style={{ color: 'var(--text)' }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Hi, I'm Arman
+        </motion.h1>
+        <motion.p
+          className="text-lg mb-12 transition-colors duration-300 md:text-xl" // Adjusted text size for responsiveness
+          style={{ color: 'var(--text)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          A freelance developer crafting innovative solutions and seeking exciting opportunities.
+        </motion.p>
+        <motion.div
+          className="flex justify-center space-x-4"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-300 md:px-8 md:py-3">
+            View Projects
+          </button>
+          <button
+            className="border-2 border-purple-600 hover:bg-purple-600 hover:text-white px-6 py-2 rounded-lg transition-all duration-300 transition-colors duration-300"
+            style={{ color: 'var(--text)' }}
+          >
+            Let's Connect
+          </button>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
