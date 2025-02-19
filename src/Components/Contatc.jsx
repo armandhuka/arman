@@ -1,97 +1,98 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import ThemeContext from "../Context/ThemeContext";
-import {
-  FaLinkedin,
-  FaTwitter,
-  FaGithub,
-  FaEnvelope,
-  FaPhone,
-} from "react-icons/fa"; // Import icons
+import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
+import Footer from "./Footer";
 
 const ContactPage = ({ id }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+
+  // Theme-based colors
+  const textColor = theme === "dark" ? "text-white" : "text-gray-900";
+  const contactBoxBg = theme === "dark" ? "bg-gray-600" : "bg-gray-100";
+  const hoverEffect = theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200";
 
   return (
     <motion.div
       id={id}
-      className={`text-white max-h-screen flex flex-col justify-between overflow-x-hidden relative ${theme === 'dark' ? 'dark-mode' : ''}`} // Apply theme class
+      className={`flex flex-col justify-between`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Social Media Icons (Right Side) */}
-      <motion.div
-        className="absolute right-8 top-1/4 flex flex-col space-y-4"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className="text-4xl text-gray-400 hover:text-blue-500 transition-colors duration-300" /> {/* Increased icon size */}
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className="text-4xl text-gray-400 hover:text-blue-500 transition-colors duration-300" /> {/* Increased icon size */}
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-4xl text-gray-400 hover:text-blue-500 transition-colors duration-300" /> {/* Increased icon size */}
-        </a>
-      </motion.div>
-
-      {/* Contact Section */}
-      <div className="flex flex-col lg:flex-row justify-between items-center p-8 space-y-10 lg:space-y-0 lg:space-x-10 max-w-full mx-auto mt-20">
-        {/* Left Column - Contact Information */}
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 gap-8 md:gap-12">
+        
+        {/* Left Side - Contact Info */}
         <motion.div
-          className="flex-1 space-y-6 lg:w-1/2 px-4 sm:px-0"
+          className="flex flex-col space-y-6 w-full md:w-1/2"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h2 className="text-5xl font-extrabold bg-clip-text text-center lg:text-left" style={{ color: 'var(--text)' }}>
-            Get in Touch
-          </h2>
-          <p className="text-lg text-center lg:text-left max-w-2xl mx-auto mt-4 mb-8"
-          style={{ color: 'var(--text)' }}>
-            Feel free to reach out to me through any of the methods below. I'm
-            always happy to connect!
-          </p>
+          <h2 className={`text-3xl sm:text-4xl font-extrabold ${textColor}`}>Let's Get in Touch</h2>
+          
+          {/* Contact Box - Email */}
+          <motion.div
+            className={`${contactBoxBg} p-5 rounded-lg shadow-lg flex items-center space-x-4 transition-all duration-300 ${hoverEffect} hover:scale-105 hover:shadow-2xl`}
+            whileHover={{ scale: 1.05 }}
+          >
+            <FaEnvelope className={`text-2xl sm:text-3xl ${textColor}`} />
+            <a
+              href="mailto:dhukaarmanumar@gmail.com"
+              className={`text-base sm:text-lg font-medium ${textColor} hover:underline`}
+            >
+              dhukaarmanumar@gmail.com
+            </a>
+          </motion.div>
 
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {/* Email */}
-            <div className="flex items-center justify-start space-x-4">
-              <FaEnvelope className="text-blue-400 text-xl" />
-              <a
-                href="mailto:dhukaarmanumar@example.com"
-                className="text-blue-400 hover:text-blue-500 font-medium transition duration-300"
-              >
-                dhukaarmanumar@gmail.com
-              </a>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-center justify-start space-x-4">
-              <FaPhone className="text-blue-400 text-xl" />
-              <span className="text-blue-400">+91 9265350694</span>
-            </div>
-          </div>
+          {/* Contact Box - Phone */}
+          <motion.div
+            className={`${contactBoxBg} p-5 rounded-lg shadow-lg flex items-center space-x-4 transition-all duration-300 ${hoverEffect} hover:scale-105 hover:shadow-2xl`}
+            whileHover={{ scale: 1.05 }}
+          >
+            <FaPhone className={`text-2xl sm:text-3xl ${textColor}`} />
+            <span className={`text-base sm:text-lg font-medium ${textColor}`}>+91 9265350694</span>
+          </motion.div>
         </motion.div>
 
-        {/* Right Column - Empty Space for Layout Balance */}
-        <div className="flex-1 hidden lg:block"></div>
+        {/* Right Side - Text & Social Media */}
+        <motion.div
+          className="w-full md:w-1/2 text-center md:text-left space-y-6"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <h3 className={`text-2xl sm:text-3xl font-bold ${textColor}`}>Have a project in mind?</h3>
+          <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+            Whether you want to collaborate, need a website, or just want to chat about tech – I'm here to help.  
+            Feel free to reach out, and let’s create something amazing together!
+          </p>
+
+          {/* Social Media Icons */}
+          <div className="flex justify-center md:justify-start space-x-6 mt-4">
+  {[
+    { icon: FaLinkedin, link: "https://in.linkedin.com/in/arman-dhuka-2b58b2270" },
+    { icon: FaTwitter, link: "https://x.com/DhukaArman?t=1xy4SLQiyLWhYshe3pYo-A&s=09" },
+    { icon: FaGithub, link: "https://github.com/armandhuka" },
+  ].map((item, index) => (
+    <motion.a
+      key={index}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`text-3xl sm:text-4xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} hover:text-blue-500 transition transform hover:scale-110`}
+      whileHover={{ y: -5 }}
+    >
+      <item.icon />
+    </motion.a>
+  ))}
+</div>
+
+        </motion.div>
       </div>
 
-      {/* Footer with Theme Toggle */}
-      <motion.footer
-        className="p-6 text-center text-white mt-12"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <p className="text-sm" style={{ color: 'var(--text)' }}>
-          &copy; {new Date().getFullYear()} Arman. All Rights Reserved.
-        </p>
-      </motion.footer>
+      {/* Footer */}
+      <Footer />
     </motion.div>
   );
 };
