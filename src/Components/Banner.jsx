@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { Helmet } from "react-helmet-async";
 
 const BannerPage = () => {
   return (
@@ -8,6 +9,16 @@ const BannerPage = () => {
       id='home'
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
+       <Helmet>
+        <title>Arman Dhuka - Web Developer Portfolio</title>
+        <meta name="description" content="Arman Dhuka's portfolio website showcasing web development projects and skills." />
+        <meta name="keywords" content="Arman Dhuka, Web Developer, React Developer, Portfolio, Frontend Developer" />
+        <meta name="author" content="Arman Dhuka" />
+        <meta property="og:title" content="Arman Dhuka - Web Developer Portfolio" />
+        <meta property="og:description" content="Explore projects and skills of Arman Dhuka, a frontend web developer." />
+        <meta property="og:type" content="website" />
+        <meta name="google-site-verification" content="QWhIDZyI_zV5R4ZV8RbQGvcXQE0hwraHgcV1MWbNOX0" />
+      </Helmet>
       {/* Social Media Icons (Mobile Responsive) */}
       <motion.div
         className="absolute left-4 top-4 z-10 flex flex-row space-x-4 md:left-8 lg:left-12 md:flex-col md:space-x-0 md:space-y-4 md:top-1/4"
