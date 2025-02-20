@@ -6,16 +6,19 @@ import ProjectSection from './Components/Project/Project';
 import Services from './Components/Services';
 import ContactPage from './Components/Contatc';
 import { ThemeProvider } from './Context/ThemeContext';
+import { HelmetProvider } from "react-helmet-async";
 
 const App = () => {
   return (
     <div className="transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
+      <HelmetProvider>
       <Header />
       <BannerPage id="home" />
       <AboutPage id="about" />
       <Services/> 
       <ProjectSection id="project" />
-      <ContactPage id="contact" /> 
+      <ContactPage id="contact" />
+      </HelmetProvider> 
     </div>
   );
 };
