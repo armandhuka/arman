@@ -7,7 +7,6 @@ import Footer from "./Footer";
 const ContactPage = ({ id }) => {
   const { theme } = useContext(ThemeContext);
 
-  // Theme-based colors
   const textColor = theme === "dark" ? "text-white" : "text-gray-900";
   const contactBoxBg = theme === "dark" ? "bg-gray-600" : "bg-gray-100";
   const hoverEffect = theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200";
@@ -17,8 +16,9 @@ const ContactPage = ({ id }) => {
       id={id}
       className={`flex flex-col justify-between`}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 gap-8 md:gap-12">
         
@@ -26,12 +26,13 @@ const ContactPage = ({ id }) => {
         <motion.div
           className="flex flex-col space-y-6 w-full md:w-1/2"
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className={`text-3xl sm:text-4xl font-extrabold ${textColor}`}>Let's Get in Touch</h2>
-          
-          {/* Contact Box - Email */}
+
+          {/* Email */}
           <motion.div
             className={`${contactBoxBg} p-5 rounded-lg shadow-lg flex items-center space-x-4 transition-all duration-300 ${hoverEffect} hover:scale-105 hover:shadow-2xl`}
             whileHover={{ scale: 1.05 }}
@@ -45,7 +46,7 @@ const ContactPage = ({ id }) => {
             </a>
           </motion.div>
 
-          {/* Contact Box - Phone */}
+          {/* Phone */}
           <motion.div
             className={`${contactBoxBg} p-5 rounded-lg shadow-lg flex items-center space-x-4 transition-all duration-300 ${hoverEffect} hover:scale-105 hover:shadow-2xl`}
             whileHover={{ scale: 1.05 }}
@@ -55,12 +56,13 @@ const ContactPage = ({ id }) => {
           </motion.div>
         </motion.div>
 
-        {/* Right Side - Text & Social Media */}
+        {/* Right Side - Message + Socials */}
         <motion.div
           className="w-full md:w-1/2 text-center md:text-left space-y-6"
           initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <h3 className={`text-2xl sm:text-3xl font-bold ${textColor}`}>Have a project in mind?</h3>
           <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -68,31 +70,37 @@ const ContactPage = ({ id }) => {
             Feel free to reach out, and let’s create something amazing together!
           </p>
 
-          {/* Social Media Icons */}
+          {/* Social Icons */}
           <div className="flex justify-center md:justify-start space-x-6 mt-4">
-  {[
-    { icon: FaLinkedin, link: "https://in.linkedin.com/in/arman-dhuka-2b58b2270" },
-    { icon: FaTwitter, link: "https://x.com/DhukaArman?t=1xy4SLQiyLWhYshe3pYo-A&s=09" },
-    { icon: FaGithub, link: "https://github.com/armandhuka" },
-  ].map((item, index) => (
-    <motion.a
-      key={index}
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`text-3xl sm:text-4xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} hover:text-blue-500 transition transform hover:scale-110`}
-      whileHover={{ y: -5 }}
-    >
-      <item.icon />
-    </motion.a>
-  ))}
-</div>
-
+            {[
+              { icon: FaLinkedin, link: "https://in.linkedin.com/in/arman-dhuka-2b58b2270" },
+              { icon: FaTwitter, link: "https://x.com/DhukaArman?t=1xy4SLQiyLWhYshe3pYo-A&s=09" },
+              { icon: FaGithub, link: "https://github.com/armandhuka" },
+            ].map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-3xl sm:text-4xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} hover:text-blue-500 transition transform hover:scale-110`}
+                whileHover={{ y: -5 }}
+              >
+                <item.icon />
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer with Scroll Animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Footer />
+      </motion.div>
     </motion.div>
   );
 };

@@ -11,6 +11,7 @@ const Services = () => {
         "💻 Web Development Portfolio",
         "📸 Photography Portfolio",
         "✍️ Writing Portfolio",
+        "etc..."
       ],
       icon: "📁",
     },
@@ -22,6 +23,7 @@ const Services = () => {
         "🎉 Event Landing Page",
         "🛠️ Service Landing Page",
         "💡 SaaS Landing Page",
+        "etc..."
       ],
       icon: "📄",
     },
@@ -33,53 +35,65 @@ const Services = () => {
         "🛒 E-commerce Website",
         "📚 Educational Website",
         "👤 Personal Website",
+        "etc..."
       ],
       icon: "🌍",
     },
   ];
 
   return (
-    <motion.div
+    <section
       id="service"
-      className="py-16"
+      className="py-20 px-4 sm:px-6 lg:px-16"
       style={{ backgroundColor: "var(--box-bg)" }}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto px-4">
-        <h2
-          className="text-4xl font-bold text-center mb-12"
-          style={{ color: "var(--text)" }}
-        >
-          Services
-        </h2>
-        {/* Responsive Grid: sm (1 column), md (2 columns), lg (3 columns) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-              style={{ backgroundColor: "var(--background)" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--text)" }}>
-                {service.icon} {service.title}
-              </h3>
-              <ul className="space-y-2">
-                {service.description.map((item, idx) => (
-                  <li key={idx} style={{ color: "var(--text)" }}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+      <motion.h2
+        className="text-4xl font-bold text-center mb-16 tracking-wide"
+        style={{ color: "var(--text)" }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        What I Can Do For You ✨
+      </motion.h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            className="border rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]"
+            style={{
+              backgroundColor: "var(--background)",
+              borderColor: "var(--border)",
+              color: "var(--text)",
+            }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-4xl mb-4">{service.icon}</div>
+
+            <h3 className="text-2xl font-semibold mb-6 group-hover:text-purple-500 transition-colors duration-300">
+              {service.title}
+            </h3>
+
+            <ul className="space-y-3">
+              {service.description.map((item, idx) => (
+                <li
+                  key={idx}
+                  className="transition duration-200"
+                  style={{ color: "var(--text)" }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
+    </section>
   );
 };
 
